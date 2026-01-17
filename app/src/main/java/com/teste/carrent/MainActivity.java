@@ -9,6 +9,13 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+    Button btn = findViewById(R.id.btnBMW);
+btn.setOnClickListener(v -> {
+        Intent i = new Intent(MainActivity.this, CarDetailsActivity.class);
+        i.putExtra("name", "BMW X5");
+        i.putExtra("price", "80€ / jour");
+        startActivity(i);
+    });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -6,5 +6,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".BookingActivity">
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:background="@color/background">
+
+        <TextView
+            android:text="Réserver la voiture"
+            android:textSize="22sp"
+            android:textStyle="bold"/>
+
+        <EditText android:hint="Nom"/>
+        <EditText android:hint="Téléphone"/>
+        <EditText android:hint="Nombre de jours"/>
+
+        <Button
+            android:id="@+id/btnConfirm"
+            android:text="Confirmer"
+            android:background="@color/button"
+            android:textColor="@color/white"/>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

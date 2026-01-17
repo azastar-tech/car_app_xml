@@ -6,5 +6,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CarDetailsActivity">
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:background="@color/background">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:textSize="26sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvPrice"
+            android:textColor="@color/gray"
+            android:layout_marginBottom="24dp"/>
+
+        <Button
+            android:id="@+id/btnRent"
+            android:text="Louer cette voiture"
+            android:background="@color/button"
+            android:textColor="@color/white"/>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
