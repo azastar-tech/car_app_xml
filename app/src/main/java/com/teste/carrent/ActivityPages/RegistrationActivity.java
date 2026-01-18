@@ -1,4 +1,4 @@
-package com.teste.carrent;
+package com.teste.carrent.ActivityPages;
 
 import android.os.Bundle;
 
