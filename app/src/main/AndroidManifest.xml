@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarRent">
         <activity
+            android:name=".BookingCompleteActivity"
+            android:exported="false" />
+        <activity
             android:name=".Login"
             android:exported="false" />
         <activity
