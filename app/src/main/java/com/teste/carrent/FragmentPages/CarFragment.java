@@ -12,13 +12,13 @@ import androidx.room.Room;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.teste.carrent.ActivityPages.CarDetailsActivity;
 import com.teste.carrent.Adapter.CarAdapter;
 import com.teste.carrent.R;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class CarFragment extends Fragment implements CarAdapter.onVehicleListener{
     private ArrayList<com.teste.carrent.Models.Vehicle> list;
@@ -29,7 +29,7 @@ public class CarFragment extends Fragment implements CarAdapter.onVehicleListene
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_vehicle, container, false);
+        View view = inflater.inflate(R.layout.fragment_car, container, false);
         initComponents(view);
         
         return view;
@@ -37,9 +37,10 @@ public class CarFragment extends Fragment implements CarAdapter.onVehicleListene
 
     private void initComponents(View view) {
 
+        assert getArguments() != null;
         String selectVehicleCategory = getArguments().getString("CATEGORY");
 
-        com.teste.carrent.DataBase.VehicleDao vehicleDao = Room.databaseBuilder(getContext(), com.teste.carrent.DataBase.Project_Database.class, "car_rental_db").allowMainThreadQueries()
+        com.teste.carrent.DataBase.VehicleDao vehicleDao = Room.databaseBuilder(Objects.requireNonNull(getContext()), com.teste.carrent.DataBase.Project_Database.class, "car_rental_db").allowMainThreadQueries()
                 .build()
                 .vehicleDao();
 
@@ -59,8 +60,5 @@ public class CarFragment extends Fragment implements CarAdapter.onVehicleListene
         startActivity(vehicleInfoPage);
     }
 
-    private void toast(String txt){
-        Toast toast = Toast.makeText(getContext(),txt,Toast.LENGTH_SHORT);
-        toast.show();
-    }
+
 }
