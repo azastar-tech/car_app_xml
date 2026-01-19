@@ -6,14 +6,15 @@ import android.widget.FrameLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.teste.carrent.FragmentPages.AccountFragment;
+import com.teste.carrent.FragmentPages.BookingFragment;
 import com.teste.carrent.R;
 
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private FrameLayout frameLayout;
 
-    private VehicleCategoryFragment vehicleCategoryFragment;
-    private BookingFragment bookingFragment;
+      private BookingFragment bookingFragment;
     private AccountFragment accountFragment;
 
     private String loggedInCustomerID;
