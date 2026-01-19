@@ -1,85 +1,73 @@
 package com.teste.carrent.ActivityPages;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.teste.carrent.FragmentPages.AccountFragment;
 import com.teste.carrent.FragmentPages.BookingFragment;
+import com.teste.carrent.FragmentPages.CarFragment;
 import com.teste.carrent.R;
 
 public class MainActivity extends AppCompatActivity {
+
     private BottomNavigationView bottomNavigationView;
-    private FrameLayout frameLayout;
-
-      private BookingFragment bookingFragment;
+    private BookingFragment bookingFragment;
     private AccountFragment accountFragment;
-
+    private CarFragment carFragment;
     private String loggedInCustomerID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_view);
+        setContentView(R.layout.activity_main);
 
         initComponents();
-        setFragment(vehicleCategoryFragment);
+        setupBottomNavigation();
 
-        clickListener();
-
+        setFragment(carFragment, loggedInCustomerID);
     }
 
-    private void clickListener() {
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+    private void setupBottomNavigation() {
+        bottomNavigationView.setOnItemSelectedListener(item -> {
 
-                switch (menuItem.getItemId()){
+            int id = item.getItemId();
 
-                    case R.id.nav_vehicle:
-                        setFragment(vehicleCategoryFragment);
-                        return true;
+            if (id == R.id.nav_vehicle) {
+                setFragment(carFragment, loggedInCustomerID);
+            } else if (id == R.id.nav_booking) {
+                setFragment(bookingFragment, loggedInCustomerID);
 
-                    case R.id.nav_booking:
-                        setFragment(bookingFragment, loggedInCustomerID);
-                        return true;
-
-                    case R.id.nav_account :
-                        setFragment(accountFragment, loggedInCustomerID);
-                        return true;
-                }
-
-                return false;
+            } else if (id == R.id.nav_account) {
+                setFragment(accountFragment, loggedInCustomerID);
             }
+            return true;
         });
-    }
 
-    private void setFragment(Fragment fragment,String Data) {
+    }
+    private void setFragment(Fragment fragment, String data) {
         Bundle bundle = new Bundle();
-        bundle.putString("CUSTOMERID",Data);
+        bundle.putString("CUSTOMERID", data);
         fragment.setArguments(bundle);
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.framelayout,fragment);
-        fragmentTransaction.commit();
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.framelayout, fragment)
+                .commit();
     }
 
-    private void setFragment(Fragment fragment) {
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.framelayout,fragment);
-        fragmentTransaction.commit();
-    }
-
-    private void initComponents(){
+    private void initComponents() {
         bottomNavigationView = findViewById(R.id.bottom_nav);
-        frameLayout = findViewById(R.id.framelayout);
 
-        vehicleCategoryFragment = new VehicleCategoryFragment();
-        bookingFragment= new BookingFragment();
+        bookingFragment = new BookingFragment();
         accountFragment = new AccountFragment();
+        carFragment = new CarFragment();
 
         loggedInCustomerID = getIntent().getStringExtra("CUSTOMERID");
-
     }
 }
