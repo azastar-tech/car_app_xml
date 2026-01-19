@@ -1,18 +1,14 @@
 package com.teste.carrent.ActivityPages;
 
 import android.os.Bundle;
+import android.widget.FrameLayout;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.teste.carrent.R;
 
 public class MainActivity extends AppCompatActivity {
-
-
     private BottomNavigationView bottomNavigationView;
     private FrameLayout frameLayout;
 
