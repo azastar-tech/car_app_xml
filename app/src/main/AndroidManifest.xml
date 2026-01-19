@@ -17,22 +17,19 @@
             android:name=".ActivityPages.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".RegistrationActivity"
+            android:name=".ActivityPages.RegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".BookingCompleteActivity"
+            android:name=".ActivityPages.BookingActivity"
             android:exported="false" />
         <activity
-            android:name=".BookingActivity"
+            android:name=".ActivityPages.BookingCompleteActivity"
             android:exported="false" />
         <activity
-            android:name=".CarDetailsActivity"
+            android:name=".ActivityPages.CarDetailsActivity"
             android:exported="false" />
-        <activity
-            android:name=".CarsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
+<activity
+            android:name=".ActivityPages.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
