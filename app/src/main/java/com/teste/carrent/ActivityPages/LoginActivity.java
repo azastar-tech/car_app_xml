@@ -39,13 +39,12 @@ public class LoginActivity extends AppCompatActivity {
 
         boolean isLoggedIn = Boolean.parseBoolean(Session.read(LoginActivity.this, "isLoggedIn", "false"));
         if(isLoggedIn){
-            Intent homePage = new Intent(LoginActivity.this,);
+            Intent homePage = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(homePage);
         }
 
         initComponents();
         clickListenHandler();
-
     }
 
     private void initComponents(){
@@ -54,8 +53,6 @@ public class LoginActivity extends AppCompatActivity {
 
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
-
-        customer = findViewById(R.id.customer);
 
         db = Room.databaseBuilder(getApplicationContext(), Project_Database.class, "car_rental_db").allowMainThreadQueries().build();
     }
@@ -80,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                     Session.save(LoginActivity.this,"customerID",check.getCustomerID()+"");
                     Session.save(LoginActivity.this,"isLoggedIn","true");
 
-                    Intent homePage = new Intent(LoginActivity.this,UserViewActivity.class);
+                    Intent homePage = new Intent(LoginActivity.this,MainActivity.class);
                     homePage.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(homePage);
                 }else{

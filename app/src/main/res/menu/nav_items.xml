@@ -3,12 +3,15 @@
 
     <item
         android:id="@+id/nav_vehicle"
-        android:icon="@drawable/vehicle_icon" />
+        android:icon="@drawable/vehicle_icon"
+        android:title="Cars"/>
     <item
         android:id="@+id/nav_booking"
         android:icon="@drawable/book_icon"
+        android:title="Booking"
         />
     <item
         android:id="@+id/nav_account"
-        android:icon="@drawable/profile_icon" />
+        android:icon="@drawable/profile_icon"
+        android:title="Profile"/>
 </menu>
